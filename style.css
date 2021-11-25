@@ -4,6 +4,14 @@ body {
   color: #333;
   font-family: "Lato", sans-serif;
 }
+li,
+h3 {
+  list-style: none;
+}
+input,
+button{
+  outline: none;
+}
 .aaa {
   width: 500px;
   margin: 0 auto;
@@ -37,12 +45,6 @@ body {
 ul {
   margin: 0;
   padding: 0px;
-}
-li, h3 {
-  list-style: none;
-}
-input,button{
-  outline: none;
 }
 button {
   background: none;
