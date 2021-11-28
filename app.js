@@ -1,6 +1,7 @@
 //Document is the DOM can be accessed in the console with document.window.
 // Tree is from the top, html, body, p etc.
 
+
 //Problem: User interaction does not provide the correct results.
 //Solution: Add interactivity so the user can manage daily tasks.
 //Break things down into smaller steps and take each step at a time.
@@ -10,14 +11,15 @@
 
 var taskInput=document.getElementById("new-task");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incompleteTasks");//ul of #incompleteTasks
-var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
+var incompleteTaskHolder=document.querySelector(".todo-task");//ul of #incompleteTasks
+var completedTasksHolder=document.querySelector(".completed-task");//completed-tasks
 
 
 //New task list item
 var createNewTaskElement=function(taskString){
 
     var listItem=document.createElement("li");
+    listItem.className = "section-list__item";
 
     //input (checkbox)
     var checkBox=document.createElement("input");//checkbx
@@ -33,18 +35,20 @@ var createNewTaskElement=function(taskString){
     var deleteButtonImg=document.createElement("img");//delete button image
 
     label.innerText=taskString;
-    label.className='task';
+    label.className='section__label';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
+    checkBox.className = "section__input-check";
+    editInput.className="section__input";
     editInput.type="text";
-    editInput.className="task";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
-    editButton.className="edit";
+    editButton.className="section__btn edit";
 
-    deleteButton.className="delete";
+    deleteButton.className="section__btn delete";
     deleteButtonImg.src='./remove.svg';
+    deleteButtonImg.className="section__btn-img";
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -85,7 +89,7 @@ var editTask=function(){
     var editInput=listItem.querySelector('input[type=text]');
     var label=listItem.querySelector("label");
     var editBtn=listItem.querySelector(".edit");
-    var containsClass=listItem.classList.contains("editMode");
+    var containsClass=listItem.classList.contains("edit-mode");
     //If class of the parent is .editmode
     if(containsClass){
 
@@ -99,7 +103,7 @@ var editTask=function(){
     }
 
     //toggle .editmode on the parent.
-    listItem.classList.toggle("editMode");
+    listItem.classList.toggle("edit-mode");
 };
 
 
